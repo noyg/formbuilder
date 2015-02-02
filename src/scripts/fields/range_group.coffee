@@ -24,7 +24,7 @@ Formbuilder.registerField 'range_group',
   """
 
   addButton: """
-    <span class="symbol"><span class="fa fa-sliders"></span></span> Range Group
+    <span class="symbol"><span class="fa fa-sliders"></span><span class="fa fa-list"></span></span> Range Group
   """
 
   defaultAttributes: (attrs) ->

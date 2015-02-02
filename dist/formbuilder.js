@@ -119,7 +119,6 @@
     };
 
     ViewFieldView.prototype.render = function() {
-      console.log(this.model.attributes);
       this.$el.addClass('response-field-' + this.model.get(Formbuilder.options.mappings.FIELD_TYPE)).data('cid', this.model.cid).html(Formbuilder.templates["view/base" + (!this.model.is_input() ? '_non_input' : '')]({
         rf: this.model
       }));
