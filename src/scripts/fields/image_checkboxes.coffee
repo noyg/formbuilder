@@ -19,7 +19,7 @@ Formbuilder.registerField 'image_checkboxes',
   """
 
   addButton: """
-    <span class="symbol"><span class="fa fa-check"></span><span class="fa fa-image"></span></span> Image Checkboxes
+    <span class="symbol"><span class="fa fa-check"></span><span class="fa fa-image"></span></span> Img Checkbox
   """
 
   defaultAttributes: (attrs) ->

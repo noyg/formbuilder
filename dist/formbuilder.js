@@ -756,7 +756,7 @@
     order: 10,
     view: "<% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>\n  <div>\n    <label class='fb-option'>\n      <img src=\"<%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].src %>\" alt=\"<%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\" />\n      <input type='checkbox' <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].checked && 'checked' %> onclick=\"javascript: return false;\" />\n      <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\n    </label>\n  </div>\n<% } %>",
     edit: "<%= Formbuilder.templates['edit/image_checkboxes_options']() %>",
-    addButton: "<span class=\"symbol\"><span class=\"fa fa-check\"></span><span class=\"fa fa-image\"></span></span> Checkboxes",
+    addButton: "<span class=\"symbol\"><span class=\"fa fa-check\"></span><span class=\"fa fa-image\"></span></span> Img Checkbox",
     defaultAttributes: function(attrs) {
       attrs.field_options.options = [
         {
@@ -854,7 +854,7 @@
     order: 40,
     view: "<% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>\n  <div>\n    <% if (rf.get(Formbuilder.options.mappings.OPTIONS)[i].min_label) { %>\n        <span><%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].min_label %></span>\n    <% } %>\n    <input type='range' value=\"<%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].default_value %>\"\n            min=\"<%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].min %>\"\n            max=\"<%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].max %>\" />\n    <% if (rf.get(Formbuilder.options.mappings.OPTIONS)[i].max_label) { %>\n        <span><%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].max_label %></span>\n    <% } %>\n  </div>\n<% } %>\n",
     edit: "<%= Formbuilder.templates['edit/range_group_options']() %>",
-    addButton: "<span class=\"symbol\"><span class=\"fa fa-sliders\"></span></span> Range Group",
+    addButton: "<span class=\"symbol\"><span class=\"fa fa-sliders\"></span><span class=\"fa fa-list\"></span></span> Range Group",
     defaultAttributes: function(attrs) {
       attrs.field_options.options = [
         {
