@@ -914,7 +914,7 @@
 }).call(this);
 
 (function() {
-  Formbuilder.registerField('number', {
+  Formbuilder.registerField('unit', {
     order: 30,
     view: "<input type='number' value=\"<%= rf.get(Formbuilder.options.mappings.DEFAULT_VALUE) %>\"\n  min=\"<%= rf.get(Formbuilder.options.mappings.MIN) %>\"\n  max=\"<%= rf.get(Formbuilder.options.mappings.MAX) %>\"\n  step=\"<%= rf.get(Formbuilder.options.mappings.STEP) %>\"\n  />\n<% if (units = rf.get(Formbuilder.options.mappings.UNITS)) { %>\n  <%= units %>\n<% } %>",
     edit: "<%= Formbuilder.templates['edit/min_max']() %>\n<%= Formbuilder.templates['edit/units']() %>\n<%= Formbuilder.templates['edit/default_value']() %>\n<%= Formbuilder.templates['edit/step']() %>",

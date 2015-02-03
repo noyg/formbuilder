@@ -1,4 +1,4 @@
-Formbuilder.registerField 'number',
+Formbuilder.registerField 'unit',
 
   order: 30
 
