@@ -385,7 +385,6 @@ class Formbuilder
       DESCRIPTION: 'field_options.description'
       INCLUDE_OTHER: 'field_options.include_other_option'
       INCLUDE_BLANK: 'field_options.include_blank_option'
-      INTEGER_ONLY: 'field_options.integer_only'
       MIN: 'field_options.min'
       MAX: 'field_options.max'
       MINLENGTH: 'field_options.minlength'

@@ -589,7 +589,6 @@
         DESCRIPTION: 'field_options.description',
         INCLUDE_OTHER: 'field_options.include_other_option',
         INCLUDE_BLANK: 'field_options.include_blank_option',
-        INTEGER_ONLY: 'field_options.integer_only',
         MIN: 'field_options.min',
         MAX: 'field_options.max',
         MINLENGTH: 'field_options.minlength',
@@ -778,8 +777,8 @@
 (function() {
   Formbuilder.registerField('number', {
     order: 30,
-    view: "<input type='text' />\n<% if (units = rf.get(Formbuilder.options.mappings.UNITS)) { %>\n  <%= units %>\n<% } %>",
-    edit: "<%= Formbuilder.templates['edit/min_max']() %>\n<%= Formbuilder.templates['edit/units']() %>\n<%= Formbuilder.templates['edit/integer_only']() %>",
+    view: "<input type='number' value=\"<%= rf.get(Formbuilder.options.mappings.DEFAULT_VALUE) %>\"\n  min=\"<%= rf.get(Formbuilder.options.mappings.MIN) %>\"\n  max=\"<%= rf.get(Formbuilder.options.mappings.MAX) %>\"\n  step=\"<%= rf.get(Formbuilder.options.mappings.STEP) %>\" />\n<% if (units = rf.get(Formbuilder.options.mappings.UNITS)) { %>\n  <%= units %>\n<% } %>",
+    edit: "<%= Formbuilder.templates['edit/min_max']() %>\n<%= Formbuilder.templates['edit/units']() %>\n<%= Formbuilder.templates['edit/default_value']() %>\n<%= Formbuilder.templates['edit/step']() %>",
     addButton: "<span class=\"symbol\"><span class=\"fa fa-number\">123</span></span> Number"
   });
 
@@ -909,23 +908,6 @@
     view: "<div class='input-line'>\n  <span class='hours'>\n    <input type=\"text\" />\n    <label>HH</label>\n  </span>\n\n  <span class='above-line'>:</span>\n\n  <span class='minutes'>\n    <input type=\"text\" />\n    <label>MM</label>\n  </span>\n\n  <span class='above-line'>:</span>\n\n  <span class='seconds'>\n    <input type=\"text\" />\n    <label>SS</label>\n  </span>\n\n  <span class='am_pm'>\n    <select>\n      <option>AM</option>\n      <option>PM</option>\n    </select>\n  </span>\n</div>",
     edit: "",
     addButton: "<span class=\"symbol\"><span class=\"fa fa-clock-o\"></span></span> Time"
-  });
-
-}).call(this);
-
-(function() {
-  Formbuilder.registerField('unit', {
-    order: 30,
-    view: "<input type='number' value=\"<%= rf.get(Formbuilder.options.mappings.DEFAULT_VALUE) %>\"\n  min=\"<%= rf.get(Formbuilder.options.mappings.MIN) %>\"\n  max=\"<%= rf.get(Formbuilder.options.mappings.MAX) %>\"\n  step=\"<%= rf.get(Formbuilder.options.mappings.STEP) %>\"\n  />\n<% if (units = rf.get(Formbuilder.options.mappings.UNITS)) { %>\n  <%= units %>\n<% } %>",
-    edit: "<%= Formbuilder.templates['edit/min_max']() %>\n<%= Formbuilder.templates['edit/units']() %>\n<%= Formbuilder.templates['edit/default_value']() %>\n<%= Formbuilder.templates['edit/step']() %>",
-    addButton: "<span class=\"symbol\"><span class=\"fa fa-sort\"></span></span> Unit",
-    defaultAttributes: function(attrs) {
-      attrs.field_options.min = 0;
-      attrs.field_options.max = 1000;
-      attrs.field_options.default_value = 0;
-      attrs.field_options.step = 1;
-      return attrs;
-    }
   });
 
 }).call(this);
