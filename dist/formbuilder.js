@@ -779,7 +779,15 @@
     order: 30,
     view: "<input type='number' value=\"<%= rf.get(Formbuilder.options.mappings.DEFAULT_VALUE) %>\"\n  min=\"<%= rf.get(Formbuilder.options.mappings.MIN) %>\"\n  max=\"<%= rf.get(Formbuilder.options.mappings.MAX) %>\"\n  step=\"<%= rf.get(Formbuilder.options.mappings.STEP) %>\" />\n<% if (units = rf.get(Formbuilder.options.mappings.UNITS)) { %>\n  <%= units %>\n<% } %>",
     edit: "<%= Formbuilder.templates['edit/min_max']() %>\n<%= Formbuilder.templates['edit/units']() %>\n<%= Formbuilder.templates['edit/default_value']() %>\n<%= Formbuilder.templates['edit/step']() %>",
-    addButton: "<span class=\"symbol\"><span class=\"fa fa-number\">123</span></span> Number"
+    addButton: "<span class=\"symbol\"><span class=\"fa fa-number\">123</span></span> Number",
+    defaultAttributes: function(attrs) {
+      attrs.field_options.min = 0;
+      attrs.field_options.max = 10000;
+      attrs.field_options.default_value = 0;
+      attrs.field_options.units = "";
+      attrs.field_options.step = 0.01;
+      return attrs;
+    }
   });
 
 }).call(this);
@@ -801,9 +809,13 @@
 (function() {
   Formbuilder.registerField('price', {
     order: 45,
-    view: "<div class='input-line'>\n  <span class='above-line'>$</span>\n  <span class='dolars'>\n    <input type='text' />\n    <label>Dollars</label>\n  </span>\n  <span class='above-line'>.</span>\n  <span class='cents'>\n    <input type='text' />\n    <label>Cents</label>\n  </span>\n</div>",
-    edit: "",
-    addButton: "<span class=\"symbol\"><span class=\"fa fa-usd\"></span></span> Price"
+    view: "<div class='input-line'>\n  <span class='above-line'>\n    <% if (units = rf.get(Formbuilder.options.mappings.UNITS)) { %>\n      <%= units %>\n    <% } %>\n  </span>\n  <span class='dolars'>\n    <input type='text' />\n    <label>Dollars</label>\n  </span>\n  <span class='above-line'>.</span>\n  <span class='cents'>\n    <input type='text' />\n    <label>Cents</label>\n  </span>\n</div>",
+    edit: "<%= Formbuilder.templates['edit/units']() %>",
+    addButton: "<span class=\"symbol\"><span class=\"fa fa-usd\"></span></span> Price",
+    defaultAttributes: function(attrs) {
+      attrs.field_options.units = "$";
+      return attrs;
+    }
   });
 
 }).call(this);

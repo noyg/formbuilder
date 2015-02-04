@@ -22,3 +22,11 @@ Formbuilder.registerField 'number',
   addButton: """
     <span class="symbol"><span class="fa fa-number">123</span></span> Number
   """
+
+  defaultAttributes: (attrs) ->
+    attrs.field_options.min = 0
+    attrs.field_options.max = 10000
+    attrs.field_options.default_value = 0
+    attrs.field_options.units = ""
+    attrs.field_options.step = 0.01
+    attrs
