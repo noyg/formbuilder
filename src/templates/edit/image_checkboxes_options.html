@@ -1,9 +1,9 @@
 <div class='fb-edit-section-header'>Options</div>
 
 <div class='option' data-rv-each-option='model.<%= Formbuilder.options.mappings.OPTIONS %>'>
-  <input type="checkbox" class='js-default-updated' data-rv-checked="option:checked" />
-  <input type="text" data-rv-input="option:label" class='option-label-input' />
-  <input type="url" data-rv-input="option:src" class='option-src-input' />
+  <input type="checkbox" class='js-default-updated' data-rv-checked="option:checked"  placeholder="Is Selected by Default?" />
+  <input type="text" data-rv-input="option:label" class='option-label-input'  placeholder="Text Below Image"/>
+  <input type="url" data-rv-input="option:src" class='option-src-input' placeholder="Image URL"/>
   <a class="js-add-option <%= Formbuilder.options.BUTTON_CLASS %>" title="Add Option"><i class='fa fa-plus-circle'></i></a>
   <a class="js-remove-option <%= Formbuilder.options.BUTTON_CLASS %>" title="Remove Option"><i class='fa fa-minus-circle'></i></a>
 </div>

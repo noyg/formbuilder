@@ -119,7 +119,7 @@ class EditFieldView extends Backbone.View
   defaultUpdated: (e) ->
     $el = $(e.currentTarget)
 
-    unless @model.get(Formbuilder.options.mappings.FIELD_TYPE) == 'checkboxes' # checkboxes can have multiple options selected
+    unless @model.get(Formbuilder.options.mappings.FIELD_TYPE) in ['checkboxes', 'image_checkboxes', 'gallery'] # checkboxes can have multiple options selected
       @$el.find(".js-default-updated").not($el).attr('checked', false).trigger('change')
 
     @forceRender()

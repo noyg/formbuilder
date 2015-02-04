@@ -235,9 +235,9 @@
     };
 
     EditFieldView.prototype.defaultUpdated = function(e) {
-      var $el;
+      var $el, _ref;
       $el = $(e.currentTarget);
-      if (this.model.get(Formbuilder.options.mappings.FIELD_TYPE) !== 'checkboxes') {
+      if ((_ref = this.model.get(Formbuilder.options.mappings.FIELD_TYPE)) !== 'checkboxes' && _ref !== 'image_checkboxes' && _ref !== 'gallery') {
         this.$el.find(".js-default-updated").not($el).attr('checked', false).trigger('change');
       }
       return this.forceRender();
@@ -1027,7 +1027,7 @@ var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<div class=\'fb-edit-section-header\'>Images</div>\r\n\r\n<div class=\'option\' data-rv-each-option=\'model.' +
 ((__t = ( Formbuilder.options.mappings.OPTIONS )) == null ? '' : __t) +
-'\'>\r\n  <input type="checkbox" class=\'js-default-updated\' data-rv-checked="option:checked" />\r\n  <input type="text" data-rv-input="option:label" class=\'option-label-input\' />\r\n  <a class="js-add-option ' +
+'\'>\r\n  <input type="checkbox" class=\'js-default-updated\' data-rv-checked="option:checked"  placeholder="Is Selected by Default?" />\r\n  <input type="text" data-rv-input="option:label" class=\'option-label-input\'  placeholder="Image Label"/>\r\n  <input type="url" data-rv-input="option:src" class=\'option-src-input\' placeholder="Image URL"/>\r\n  <a class="js-add-option ' +
 ((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
 '" title="Add Option"><i class=\'fa fa-plus-circle\'></i></a>\r\n  <a class="js-remove-option ' +
 ((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
@@ -1045,7 +1045,7 @@ var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<div class=\'fb-edit-section-header\'>Options</div>\r\n\r\n<div class=\'option\' data-rv-each-option=\'model.' +
 ((__t = ( Formbuilder.options.mappings.OPTIONS )) == null ? '' : __t) +
-'\'>\r\n  <input type="checkbox" class=\'js-default-updated\' data-rv-checked="option:checked" />\r\n  <input type="text" data-rv-input="option:label" class=\'option-label-input\' />\r\n  <input type="url" data-rv-input="option:src" class=\'option-src-input\' />\r\n  <a class="js-add-option ' +
+'\'>\r\n  <input type="checkbox" class=\'js-default-updated\' data-rv-checked="option:checked"  placeholder="Is Selected by Default?" />\r\n  <input type="text" data-rv-input="option:label" class=\'option-label-input\'  placeholder="Text Below Image"/>\r\n  <input type="url" data-rv-input="option:src" class=\'option-src-input\' placeholder="Image URL"/>\r\n  <a class="js-add-option ' +
 ((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
 '" title="Add Option"><i class=\'fa fa-plus-circle\'></i></a>\r\n  <a class="js-remove-option ' +
 ((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
@@ -1075,7 +1075,7 @@ var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<input type=\'text\' data-rv-input=\'model.' +
 ((__t = ( Formbuilder.options.mappings.LABEL )) == null ? '' : __t) +
-'\' />\r\n<textarea data-rv-input=\'model.' +
+'\' placeholder=\'Add a title to this field\'/>\r\n<textarea data-rv-input=\'model.' +
 ((__t = ( Formbuilder.options.mappings.DESCRIPTION )) == null ? '' : __t) +
 '\'\r\n  placeholder=\'Add a longer description to this field\'></textarea>';
 
@@ -1140,7 +1140,7 @@ __p += '\r\n  <label>\r\n    <input type=\'checkbox\' data-rv-checked=\'model.' 
  } ;
 __p += '\r\n\r\n<div class=\'option\' data-rv-each-option=\'model.' +
 ((__t = ( Formbuilder.options.mappings.OPTIONS )) == null ? '' : __t) +
-'\'>\r\n  <input type="checkbox" class=\'js-default-updated\' data-rv-checked="option:checked" />\r\n  <input type="text" data-rv-input="option:label" class=\'option-label-input\' />\r\n  <a class="js-add-option ' +
+'\'>\r\n  <input type="checkbox" class=\'js-default-updated\' data-rv-checked="option:checked"  placeholder="Is Selected by Default?" />\r\n  <input type="text" data-rv-input="option:label" class=\'option-label-input\'  placeholder="Label"/>\r\n  <a class="js-add-option ' +
 ((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
 '" title="Add Option"><i class=\'fa fa-plus-circle\'></i></a>\r\n  <a class="js-remove-option ' +
 ((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
@@ -1164,7 +1164,7 @@ var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<div class=\'fb-edit-section-header\'>Ranges</div>\r\n\r\n<div class=\'option\' data-rv-each-option=\'model.' +
 ((__t = ( Formbuilder.options.mappings.OPTIONS )) == null ? '' : __t) +
-'\'>\r\n  Min: <input type="text" data-rv-input="option:min" class=\'option-label-input\' /><br/>\r\n  Label: <input type="text" data-rv-input="option:min_label" class=\'option-label-input\' /><br/>\r\n  Max: <input type="text" data-rv-input="option:max" class=\'option-label-input\' /><br/>\r\n  Label: <input type="text" data-rv-input="option:max_label" class=\'option-label-input\' /><br/>\r\n  Value: <input type="text" data-rv-input="option:default_value" class=\'option-label-input\' /><br/>\r\n  <a class="js-add-option ' +
+'\'>\r\n  Min: <input type="text" data-rv-input="option:min" class=\'option-label-input\' placeholder="Min Value" /><br/>\r\n  Label: <input type="text" data-rv-input="option:min_label" class=\'option-label-input\' placeholder="Min Value Label" /><br/>\r\n  Max: <input type="text" data-rv-input="option:max" class=\'option-label-input\' placeholder="Max Value" /><br/>\r\n  Label: <input type="text" data-rv-input="option:max_label" class=\'option-label-input\' placeholder="Max Value Label" /><br/>\r\n  Value: <input type="text" data-rv-input="option:default_value" class=\'option-label-input\' placeholder="Default Value" /><br/>\r\n  <a class="js-add-option ' +
 ((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
 '" title="Add Range"><i class=\'fa fa-plus-circle\'></i></a>\r\n  <a class="js-remove-option ' +
 ((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
