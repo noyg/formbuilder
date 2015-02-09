@@ -19,7 +19,7 @@ Formbuilder.registerField 'checkboxes',
           Other
         </label>
 
-        <input type='text' />
+        <input type='text' value='<%= rf.get(Formbuilder.options.mappings.INCLUDE_OTHER_VALUE) %>'/>
       </div>
     <% } %>
   """
@@ -40,5 +40,6 @@ Formbuilder.registerField 'checkboxes',
       label: "",
       checked: false
     ]
+    attrs.field_options.include_other_option_value = ''
 
     attrs

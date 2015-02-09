@@ -4,7 +4,12 @@ Formbuilder.registerField 'gallery',
 
   view: """
     <input type='file' />
-    <a href='#'>Gallery</a>
+    <button href='#'>Gallery</button>
+    <div>
+      <% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>
+        <img src="<%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].src %>" alt="<%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>" width="30"/>
+      <% } %>
+    </div>
   """
 
   edit: """

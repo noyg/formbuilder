@@ -3,26 +3,15 @@ Formbuilder.registerField 'price',
   order: 45
 
   view: """
-    <div class='input-line'>
-      <span class='above-line'>
-        <% if (units = rf.get(Formbuilder.options.mappings.UNITS)) { %>
-          <%= units %>
-        <% } %>
-      </span>
-      <span class='dolars'>
-        <input type='text' />
-        <label>Dollars</label>
-      </span>
-      <span class='above-line'>.</span>
-      <span class='cents'>
-        <input type='text' />
-        <label>Cents</label>
-      </span>
-    </div>
+    <% if (units = rf.get(Formbuilder.options.mappings.UNITS)) { %>
+      <%= units %>
+    <% } %>
+    <input type='number' value='<%= rf.get(Formbuilder.options.mappings.VALUE) %>'/>
   """
 
   edit: """
     <%= Formbuilder.templates['edit/units']() %>
+    <%= Formbuilder.templates['edit/value']() %>
   """
 
   addButton: """
@@ -31,4 +20,5 @@ Formbuilder.registerField 'price',
 
   defaultAttributes: (attrs) ->
     attrs.field_options.units = "$"
+    attrs.field_options.value = ''
     attrs

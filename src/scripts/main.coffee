@@ -392,9 +392,16 @@ class Formbuilder
       LENGTH_UNITS: 'field_options.min_max_length_units'
       MIN_LABEL: 'field_options.min_label'
       MAX_LABEL: 'field_options.max_label'
-      DEFAULT_VALUE: 'field_options.default_value'
+      VALUE: 'field_options.value'
       STEP: 'field_options.step'
       SRC: 'field_options.src'
+      VALUE_NOW: 'field_options.value_now'
+      INCLUDE_OTHER_VALUE: 'field_options.include_other_option_value'
+      ADDRESS_VALUE: 'field_options.address_value'
+      CITY_VALUE: 'field_options.city_value'
+      STATE_VALUE: 'field_options.state_value'
+      ZIPCODE_VALUE: 'field_options.zipcode_value'
+      COUNTRY_VALUE: 'field_options.country_value'
 
     dict:
       ALL_CHANGES_SAVED: 'All changes saved'

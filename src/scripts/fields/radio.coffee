@@ -19,7 +19,7 @@ Formbuilder.registerField 'radio',
           Other
         </label>
 
-        <input type='text' />
+        <input type='text' value='<%= rf.get(Formbuilder.options.mappings.INCLUDE_OTHER_VALUE) %>'/>
       </div>
     <% } %>
   """
@@ -33,7 +33,6 @@ Formbuilder.registerField 'radio',
   """
 
   defaultAttributes: (attrs) ->
-    # @todo
     attrs.field_options.options = [
       label: "",
       checked: false
@@ -41,5 +40,6 @@ Formbuilder.registerField 'radio',
       label: "",
       checked: false
     ]
+    attrs.field_options.include_other_option_value = ''
 
     attrs
