@@ -1,9 +1,10 @@
 {
   "name": "formbuilder",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "homepage": "https://github.com/dobtco/formbuilder",
   "authors": [
-    "ajb <ad@mbecker.cc>"
+    "ajb <ad@mbecker.cc>",
+    "noyg <noy@marquee.me>"
   ],
   "description": "Graphical form builder for the web.",
   "main": [

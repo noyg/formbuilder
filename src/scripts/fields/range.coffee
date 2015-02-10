@@ -19,7 +19,7 @@ Formbuilder.registerField 'range',
   """
 
   addButton: """
-    <span class="symbol"><span class="fa fa-sliders"></span></span> Range
+    <span class="symbol"><span class="fa fa-arrows-h"></span></span> Range
   """
 
   defaultAttributes: (attrs) ->

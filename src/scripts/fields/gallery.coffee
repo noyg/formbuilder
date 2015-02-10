@@ -19,3 +19,8 @@ Formbuilder.registerField 'gallery',
   addButton: """
     <span class="symbol"><span class="fa fa-image"></span></span> Gallery
   """
+
+  defaultAttributes: (attrs) ->
+    attrs.field_options.uploaded_image_value = ''
+
+    attrs

@@ -402,6 +402,8 @@ class Formbuilder
       STATE_VALUE: 'field_options.state_value'
       ZIPCODE_VALUE: 'field_options.zipcode_value'
       COUNTRY_VALUE: 'field_options.country_value'
+      INCLUDE_OTHER_CHECKED: 'field_options.include_other_option_checked'
+      UPLOADED_IMAGE_VALUE: 'field_options.uploaded_image_value'
 
     dict:
       ALL_CHANGES_SAVED: 'All changes saved'

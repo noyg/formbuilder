@@ -605,7 +605,9 @@
         CITY_VALUE: 'field_options.city_value',
         STATE_VALUE: 'field_options.state_value',
         ZIPCODE_VALUE: 'field_options.zipcode_value',
-        COUNTRY_VALUE: 'field_options.country_value'
+        COUNTRY_VALUE: 'field_options.country_value',
+        INCLUDE_OTHER_CHECKED: 'field_options.include_other_option_checked',
+        UPLOADED_IMAGE_VALUE: 'field_options.uploaded_image_value'
       },
       dict: {
         ALL_CHANGES_SAVED: 'All changes saved',
@@ -675,7 +677,7 @@
 (function() {
   Formbuilder.registerField('checkboxes', {
     order: 10,
-    view: "<% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>\n  <div>\n    <label class='fb-option'>\n      <input type='checkbox' <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].checked && 'checked' %> onclick=\"javascript: return false;\" />\n      <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\n    </label>\n  </div>\n<% } %>\n\n<% if (rf.get(Formbuilder.options.mappings.INCLUDE_OTHER)) { %>\n  <div class='other-option'>\n    <label class='fb-option'>\n      <input type='checkbox' />\n      Other\n    </label>\n\n    <input type='text' value='<%= rf.get(Formbuilder.options.mappings.INCLUDE_OTHER_VALUE) %>'/>\n  </div>\n<% } %>",
+    view: "<% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>\n  <div>\n    <label class='fb-option'>\n      <input type='checkbox' <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].checked && 'checked' %> onclick=\"javascript: return false;\" />\n      <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\n    </label>\n  </div>\n<% } %>\n\n<% if (rf.get(Formbuilder.options.mappings.INCLUDE_OTHER)) { %>\n  <div class='other-option'>\n    <label class='fb-option'>\n      <input type='checkbox' <%= rf.get(Formbuilder.options.mappings.INCLUDE_OTHER_CHECKED) && 'checked' %> />\n      Other\n    </label>\n\n    <input type='text' value='<%= rf.get(Formbuilder.options.mappings.INCLUDE_OTHER_VALUE) %>'/>\n  </div>\n<% } %>",
     edit: "<%= Formbuilder.templates['edit/options']({ includeOther: true }) %>",
     addButton: "<span class=\"symbol\"><span class=\"fa fa-square-o\"></span></span> Checkboxes",
     defaultAttributes: function(attrs) {
@@ -689,6 +691,7 @@
         }
       ];
       attrs.field_options.include_other_option_value = '';
+      attrs.field_options.include_other_option_checked = false;
       return attrs;
     }
   });
@@ -698,7 +701,7 @@
 (function() {
   Formbuilder.registerField('date', {
     order: 20,
-    view: "<% var date = rf.get(Formbuilder.options.mappings.VALUE), dateparts = date.split('|'); %>\n<div class='input-line'>\n  <span class='month'>\n    <input type=\"text\" value='<%= dateparts[0] %>'/>\n    <label>MM</label>\n  </span>\n\n  <span class='above-line'>/</span>\n\n  <span class='day'>\n    <input type=\"text\" value=\"<%= dateparts[1] %>\"/>\n    <label>DD</label>\n  </span>\n\n  <span class='above-line'>/</span>\n\n  <span class='year'>\n    <input type=\"text\" value=\"<%= dateparts[2] %>\"/>\n    <label>YY</label>\n  </span>\n</div>",
+    view: "<% var date = rf.get(Formbuilder.options.mappings.VALUE), dateparts = date.split('|'); %>\n<div class='input-line'>\n  <span class='month'>\n    <input type=\"text\" value='<%= (dateparts[0] > 12 || dateparts[0] < 1) ? ((dateparts[0] > 12) ? '12' : '1') : dateparts[0] %>'/>\n    <label>MM</label>\n  </span>\n\n  <span class='above-line'>/</span>\n\n  <span class='day'>\n    <input type=\"text\" value=\"<%= (dateparts[1] > 31 || dateparts[1] < 1) ? ((dateparts[1] > 31) ? '31' : '1') : dateparts[1] %>\"/>\n    <label>DD</label>\n  </span>\n\n  <span class='above-line'>/</span>\n\n  <span class='year'>\n    <input type=\"text\" value=\"<%= (dateparts[2] < 1) ? '1' : dateparts[2] %>\"/>\n    <label>YY</label>\n  </span>\n</div>",
     edit: "<%= Formbuilder.templates['edit/value']() %>\n<%= Formbuilder.templates['edit/value_now']() %>",
     addButton: "<span class=\"symbol\"><span class=\"fa fa-calendar\"></span></span> Date",
     defaultAttributes: function(attrs) {
@@ -765,7 +768,11 @@
     order: 40,
     view: "<input type='file' />\n<button href='#'>Gallery</button>\n<div>\n  <% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>\n    <img src=\"<%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].src %>\" alt=\"<%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\" width=\"30\"/>\n  <% } %>\n</div>",
     edit: "<%= Formbuilder.templates['edit/gallery_images']() %>",
-    addButton: "<span class=\"symbol\"><span class=\"fa fa-image\"></span></span> Gallery"
+    addButton: "<span class=\"symbol\"><span class=\"fa fa-image\"></span></span> Gallery",
+    defaultAttributes: function(attrs) {
+      attrs.field_options.uploaded_image_value = '';
+      return attrs;
+    }
   });
 
 }).call(this);
@@ -775,7 +782,7 @@
     order: 10,
     view: "<% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>\n  <div>\n    <label class='fb-option'>\n      <img src=\"<%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].src %>\" alt=\"<%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\" />\n      <input type='checkbox' <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].checked && 'checked' %> onclick=\"javascript: return false;\" />\n      <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\n    </label>\n  </div>\n<% } %>",
     edit: "<%= Formbuilder.templates['edit/image_checkboxes_options']() %>",
-    addButton: "<span class=\"symbol\"><span class=\"fa fa-check\"></span><span class=\"fa fa-image\"></span></span> Img Checkbox",
+    addButton: "<span class=\"symbol\"><span class=\"fa fa-th\"></span></span> Img Checkbox",
     defaultAttributes: function(attrs) {
       attrs.field_options.options = [
         {
@@ -845,7 +852,7 @@
 (function() {
   Formbuilder.registerField('radio', {
     order: 15,
-    view: "<% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>\n  <div>\n    <label class='fb-option'>\n      <input type='radio' <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].checked && 'checked' %> onclick=\"javascript: return false;\" />\n      <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\n    </label>\n  </div>\n<% } %>\n\n<% if (rf.get(Formbuilder.options.mappings.INCLUDE_OTHER)) { %>\n  <div class='other-option'>\n    <label class='fb-option'>\n      <input type='radio' />\n      Other\n    </label>\n\n    <input type='text' value='<%= rf.get(Formbuilder.options.mappings.INCLUDE_OTHER_VALUE) %>'/>\n  </div>\n<% } %>",
+    view: "<% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>\n  <div>\n    <label class='fb-option'>\n      <input type='radio' <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].checked && 'checked' %> onclick=\"javascript: return false;\" />\n      <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\n    </label>\n  </div>\n<% } %>\n\n<% if (rf.get(Formbuilder.options.mappings.INCLUDE_OTHER)) { %>\n  <div class='other-option'>\n    <label class='fb-option'>\n      <input type='radio'  <%= rf.get(Formbuilder.options.mappings.INCLUDE_OTHER_CHECKED) && 'checked' %> />\n      Other\n    </label>\n\n    <input type='text' value='<%= rf.get(Formbuilder.options.mappings.INCLUDE_OTHER_VALUE) %>'/>\n  </div>\n<% } %>",
     edit: "<%= Formbuilder.templates['edit/options']({ includeOther: true }) %>",
     addButton: "<span class=\"symbol\"><span class=\"fa fa-circle-o\"></span></span> Multiple Choice",
     defaultAttributes: function(attrs) {
@@ -859,6 +866,7 @@
         }
       ];
       attrs.field_options.include_other_option_value = '';
+      attrs.field_options.include_other_option_checked = false;
       return attrs;
     }
   });
@@ -870,7 +878,7 @@
     order: 40,
     view: "<% if (rf.get(Formbuilder.options.mappings.MIN_LABEL)) { %>\n    <span><%= rf.get(Formbuilder.options.mappings.MIN_LABEL) %></span>\n<% } %>\n<input type='range' value=\"<%= rf.get(Formbuilder.options.mappings.VALUE) %>\" min=\"<%= rf.get(Formbuilder.options.mappings.MIN) %>\" max=\"<%= rf.get(Formbuilder.options.mappings.MAX) %>\" />\n<% if (rf.get(Formbuilder.options.mappings.MAX_LABEL)) { %>\n    <span><%= rf.get(Formbuilder.options.mappings.MAX_LABEL) %></span>\n<% } %>",
     edit: "<%= Formbuilder.templates['edit/min_max']() %>\n<%= Formbuilder.templates['edit/min_max_labels']() %>\n<%= Formbuilder.templates['edit/value']() %>",
-    addButton: "<span class=\"symbol\"><span class=\"fa fa-sliders\"></span></span> Range",
+    addButton: "<span class=\"symbol\"><span class=\"fa fa-arrows-h\"></span></span> Range",
     defaultAttributes: function(attrs) {
       attrs.field_options.min_label = "least";
       attrs.field_options.min = 0;
@@ -888,7 +896,7 @@
     order: 40,
     view: "<% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>\n  <div>\n    <% if (rf.get(Formbuilder.options.mappings.OPTIONS)[i].min_label) { %>\n        <span><%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].min_label %></span>\n    <% } %>\n    <input type='range' value=\"<%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].value %>\"\n            min=\"<%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].min %>\"\n            max=\"<%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].max %>\" />\n    <% if (rf.get(Formbuilder.options.mappings.OPTIONS)[i].max_label) { %>\n        <span><%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].max_label %></span>\n    <% } %>\n  </div>\n<% } %>\n",
     edit: "<%= Formbuilder.templates['edit/range_group_options']() %>",
-    addButton: "<span class=\"symbol\"><span class=\"fa fa-sliders\"></span><span class=\"fa fa-list\"></span></span> Range Group",
+    addButton: "<span class=\"symbol\"><span class=\"fa fa-sliders\"></span></span> Range Group",
     defaultAttributes: function(attrs) {
       attrs.field_options.options = [
         {
@@ -1128,9 +1136,9 @@ var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<div class=\'fb-edit-section-header\'>Minimum / Maximum</div>\r\n\r\nAbove\r\n<input type="text" data-rv-input="model.' +
 ((__t = ( Formbuilder.options.mappings.MIN )) == null ? '' : __t) +
-'" style="width: 30px" />\r\n\r\n&nbsp;&nbsp;\r\n\r\nBelow\r\n<input type="text" data-rv-input="model.' +
+'" style="width: 60px" />\r\n\r\n&nbsp;&nbsp;\r\n\r\nBelow\r\n<input type="text" data-rv-input="model.' +
 ((__t = ( Formbuilder.options.mappings.MAX )) == null ? '' : __t) +
-'" style="width: 30px" />\r\n';
+'" style="width: 60px" />\r\n';
 
 }
 return __p
@@ -1189,7 +1197,9 @@ __p += '\r\n  <label>\r\n    <input type=\'checkbox\' data-rv-checked=\'model.' 
 ((__t = ( Formbuilder.options.mappings.INCLUDE_OTHER )) == null ? '' : __t) +
 '\' />\r\n    Include "other"\r\n  </label>\r\n  <input type=\'text\' data-rv-input=\'model.' +
 ((__t = ( Formbuilder.options.mappings.INCLUDE_OTHER_VALUE )) == null ? '' : __t) +
-'\' />\r\n';
+'\' />\r\n  <label>\r\n    <input type=\'checkbox\' data-rv-checked=\'model.' +
+((__t = ( Formbuilder.options.mappings.INCLUDE_OTHER_CHECKED )) == null ? '' : __t) +
+'\' />\r\n    Other is checked by default\r\n  </label>\r\n';
  } ;
 __p += '\r\n\r\n<div class=\'fb-bottom-add\'>\r\n  <a class="js-add-option ' +
 ((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +

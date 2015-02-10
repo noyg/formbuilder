@@ -15,7 +15,7 @@ Formbuilder.registerField 'checkboxes',
     <% if (rf.get(Formbuilder.options.mappings.INCLUDE_OTHER)) { %>
       <div class='other-option'>
         <label class='fb-option'>
-          <input type='checkbox' />
+          <input type='checkbox' <%= rf.get(Formbuilder.options.mappings.INCLUDE_OTHER_CHECKED) && 'checked' %> />
           Other
         </label>
 
@@ -41,5 +41,6 @@ Formbuilder.registerField 'checkboxes',
       checked: false
     ]
     attrs.field_options.include_other_option_value = ''
+    attrs.field_options.include_other_option_checked = false
 
     attrs
