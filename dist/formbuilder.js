@@ -561,7 +561,7 @@
       defaultFieldAttrs: function(field_type) {
         var attrs, _base;
         attrs = {};
-        attrs[Formbuilder.options.mappings.LABEL] = 'Untitled';
+        attrs[Formbuilder.options.mappings.LABEL] = 'Question';
         attrs[Formbuilder.options.mappings.FIELD_TYPE] = field_type;
         attrs[Formbuilder.options.mappings.REQUIRED] = true;
         attrs['field_options'] = {};
@@ -679,7 +679,7 @@
     order: 10,
     view: "<% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>\n  <div>\n    <label class='fb-option'>\n      <input type='checkbox' <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].checked && 'checked' %> onclick=\"javascript: return false;\" />\n      <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\n    </label>\n  </div>\n<% } %>\n\n<% if (rf.get(Formbuilder.options.mappings.INCLUDE_OTHER)) { %>\n  <div class='other-option'>\n    <label class='fb-option'>\n      <input type='checkbox' <%= rf.get(Formbuilder.options.mappings.INCLUDE_OTHER_CHECKED) && 'checked' %> />\n      Other\n    </label>\n\n    <input type='text' value='<%= rf.get(Formbuilder.options.mappings.INCLUDE_OTHER_VALUE) %>'/>\n  </div>\n<% } %>",
     edit: "<%= Formbuilder.templates['edit/options']({ includeOther: true }) %>",
-    addButton: "<span class=\"symbol\"><span class=\"fa fa-square-o\"></span></span> Checkboxes",
+    addButton: "<span class=\"symbol\"><span class=\"fa fa-square-o\"></span></span> Multiple Choice",
     defaultAttributes: function(attrs) {
       attrs.field_options.options = [
         {
@@ -739,7 +739,7 @@
   Formbuilder.registerField('email', {
     order: 40,
     view: "<input type='text' class='rf-size-<%= rf.get(Formbuilder.options.mappings.SIZE) %>' value='<%= rf.get(Formbuilder.options.mappings.VALUE) %>' />",
-    edit: "<%= Formbuilder.templates['edit/size']() %>\n<%= Formbuilder.templates['edit/value']() %>",
+    edit: "<%= Formbuilder.templates['edit/value']() %>",
     addButton: "<span class=\"symbol\"><span class=\"fa fa-envelope-o\"></span></span> Email",
     defaultAttributes: function(attrs) {
       attrs.field_options.value = '';
@@ -753,7 +753,7 @@
   Formbuilder.registerField('file', {
     order: 40,
     view: "<input type='file' class='rf-size-<%= rf.get(Formbuilder.options.mappings.SIZE) %>' />",
-    edit: "<%= Formbuilder.templates['edit/size']() %>",
+    edit: "",
     addButton: "<span class=\"symbol\"><span class=\"fa fa-file-o\"></span></span> File",
     defaultAttributes: function(attrs) {
       attrs.field_options.value = '';
@@ -766,11 +766,114 @@
 (function() {
   Formbuilder.registerField('gallery', {
     order: 40,
-    view: "<input type='file' />\n<button href='#'>Gallery</button>\n<div>\n  <% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>\n    <img src=\"<%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].src %>\" alt=\"<%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\" width=\"30\"/>\n  <% } %>\n</div>",
+    view: "<input type='file' />\n<button href='#'>Gallery</button>\n<div>\n  <% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>\n    <img src=\"<%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].src %>\" alt=\"<%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\" width=\"100\"/>\n  <% } %>\n</div>",
     edit: "<%= Formbuilder.templates['edit/gallery_images']() %>",
     addButton: "<span class=\"symbol\"><span class=\"fa fa-image\"></span></span> Gallery",
     defaultAttributes: function(attrs) {
       attrs.field_options.uploaded_image_value = '';
+      attrs.field_options.options = [
+        {
+          label: "GRUPOIMPULSA",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery1.jpg"
+        }, {
+          label: "ONLY",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery2.jpg"
+        }, {
+          label: "JAMES GEORGE",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery3.jpg"
+        }, {
+          label: "MOXI",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery4.jpg"
+        }, {
+          label: "NOOR ARCHITECT STUDIO",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery5.jpg"
+        }, {
+          label: "BOCANA",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery6.jpg"
+        }, {
+          label: "LAAND",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery7.jpg"
+        }, {
+          label: "ECO CHEFS",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery8.jpg"
+        }, {
+          label: "SCHHOL OF FASHION INDUSTRY",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery9.jpg"
+        }, {
+          label: "Sparkling Brain",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery10.jpg"
+        }, {
+          label: "TEA BAR",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery11.jpg"
+        }, {
+          label: "BLUE BLUE BERRY",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery12.jpg"
+        }, {
+          label: "WHITE BUDDHA",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery13.jpg"
+        }, {
+          label: "little wren",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery14.jpg"
+        }, {
+          label: "24TH SINGAPORE INTERNATIONAL FILM FESTIVAL",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery15.jpg"
+        }, {
+          label: "ENFANT",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery16.jpg"
+        }, {
+          label: "Sample Logo",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery17.jpg"
+        }, {
+          label: "SAN ANTONIO TENNIS ASSOCIATION",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery18.jpg"
+        }, {
+          label: "ATE NEO",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery19.jpg"
+        }, {
+          label: "WINE after COFFEE",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery20.jpg"
+        }, {
+          label: "MO TEZ",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery21.jpg"
+        }, {
+          label: "Upp",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery22.jpg"
+        }, {
+          label: "MARK",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery23.jpg"
+        }, {
+          label: "BOOSTER",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery24.jpg"
+        }, {
+          label: "STORM FOUNDRY",
+          checked: false,
+          src: "http://marquee.me/images/logo_samples/logo_gallery25.jpg"
+        }
+      ];
       return attrs;
     }
   });
@@ -782,7 +885,7 @@
     order: 10,
     view: "<% for (i in (rf.get(Formbuilder.options.mappings.OPTIONS) || [])) { %>\n  <div>\n    <label class='fb-option'>\n      <img src=\"<%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].src %>\" alt=\"<%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\" />\n      <input type='checkbox' <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].checked && 'checked' %> onclick=\"javascript: return false;\" />\n      <%= rf.get(Formbuilder.options.mappings.OPTIONS)[i].label %>\n    </label>\n  </div>\n<% } %>",
     edit: "<%= Formbuilder.templates['edit/image_checkboxes_options']() %>",
-    addButton: "<span class=\"symbol\"><span class=\"fa fa-th\"></span></span> Img Checkbox",
+    addButton: "<span class=\"symbol\"><span class=\"fa fa-th\"></span></span> Image Question",
     defaultAttributes: function(attrs) {
       attrs.field_options.options = [
         {
@@ -823,10 +926,9 @@
   Formbuilder.registerField('paragraph', {
     order: 5,
     view: "<textarea class='rf-size-<%= rf.get(Formbuilder.options.mappings.SIZE) %>'><%= rf.get(Formbuilder.options.mappings.VALUE) %></textarea>",
-    edit: "<%= Formbuilder.templates['edit/size']() %>\n<%= Formbuilder.templates['edit/min_max_length']() %>\n<%= Formbuilder.templates['edit/value']() %>",
-    addButton: "<span class=\"symbol\">&#182;</span> Paragraph",
+    edit: "<%= Formbuilder.templates['edit/min_max_length']() %>\n<%= Formbuilder.templates['edit/value']() %>",
+    addButton: "<span class=\"symbol\">&#182;</span> Long Answer",
     defaultAttributes: function(attrs) {
-      attrs.field_options.size = 'small';
       attrs.field_options.value = '';
       return attrs;
     }
@@ -941,7 +1043,7 @@
     order: 0,
     view: "<input type='text' class='rf-size-<%= rf.get(Formbuilder.options.mappings.SIZE) %>' value='<%= rf.get(Formbuilder.options.mappings.VALUE) %>' />",
     edit: "<%= Formbuilder.templates['edit/size']() %>\n<%= Formbuilder.templates['edit/value']() %>\n<%= Formbuilder.templates['edit/min_max_length']() %>",
-    addButton: "<span class='symbol'><span class='fa fa-font'></span></span> Text",
+    addButton: "<span class='symbol'><span class='fa fa-font'></span></span> Short Answer",
     defaultAttributes: function(attrs) {
       attrs.field_options.size = 'small';
       attrs.field_options.value = '';
@@ -1058,7 +1160,7 @@ this["Formbuilder"]["templates"]["edit/common"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class=\'fb-edit-section-header\'>Label</div>\r\n\r\n<div class=\'fb-common-wrapper\'>\r\n  <div class=\'fb-label-description\'>\r\n    ' +
+__p += '<div class=\'fb-edit-section-header\'>Question</div>\r\n\r\n<div class=\'fb-common-wrapper\'>\r\n  <div class=\'fb-label-description\'>\r\n    ' +
 ((__t = ( Formbuilder.templates['edit/label_description']() )) == null ? '' : __t) +
 '\r\n  </div>\r\n  <div class=\'fb-common-checkboxes\'>\r\n    ' +
 ((__t = ( Formbuilder.templates['edit/checkboxes']() )) == null ? '' : __t) +
@@ -1092,7 +1194,7 @@ var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<div class=\'fb-edit-section-header\'>Options</div>\r\n\r\n<div class=\'option\' data-rv-each-option=\'model.' +
 ((__t = ( Formbuilder.options.mappings.OPTIONS )) == null ? '' : __t) +
-'\'>\r\n  <input type="checkbox" class=\'js-default-updated\' data-rv-checked="option:checked"  placeholder="Is Selected by Default?" />\r\n  <input type="text" data-rv-input="option:label" class=\'option-label-input\'  placeholder="Text Below Image"/>\r\n  <input type="url" data-rv-input="option:src" class=\'option-src-input\' placeholder="Image URL"/>\r\n  <a class="js-add-option ' +
+'\'>\r\n  <input type="checkbox" class=\'js-default-updated\' data-rv-checked="option:checked"  placeholder="Is Selected by Default?" />\r\n  <input type="text" data-rv-input="option:label" class=\'option-label-input\'  placeholder="Image title"/>\r\n  <input type="url" data-rv-input="option:src" class=\'option-src-input\' placeholder="Image URL"/>\r\n  <a class="js-add-option ' +
 ((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
 '" title="Add Option"><i class=\'fa fa-plus-circle\'></i></a>\r\n  <a class="js-remove-option ' +
 ((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
@@ -1122,9 +1224,9 @@ var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<input type=\'text\' data-rv-input=\'model.' +
 ((__t = ( Formbuilder.options.mappings.LABEL )) == null ? '' : __t) +
-'\' placeholder=\'Add a title to this field\'/>\r\n<textarea data-rv-input=\'model.' +
+'\' placeholder=\'Question\'/>\r\n<textarea data-rv-input=\'model.' +
 ((__t = ( Formbuilder.options.mappings.DESCRIPTION )) == null ? '' : __t) +
-'\'\r\n  placeholder=\'Add a longer description to this field\'></textarea>';
+'\'\r\n  placeholder=\'Add a description\'></textarea>';
 
 }
 return __p
@@ -1231,7 +1333,7 @@ this["Formbuilder"]["templates"]["edit/size"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class=\'fb-edit-section-header\'>Size</div>\r\n<select data-rv-value="model.' +
+__p += '<div class=\'fb-edit-section-header\'>Answer box size</div>\r\n<select data-rv-value="model.' +
 ((__t = ( Formbuilder.options.mappings.SIZE )) == null ? '' : __t) +
 '">\r\n  <option value="small">Small</option>\r\n  <option value="medium">Medium</option>\r\n  <option value="large">Large</option>\r\n</select>\r\n';
 
@@ -1267,7 +1369,7 @@ this["Formbuilder"]["templates"]["edit/value"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class=\'fb-edit-section-header\'>Default value</div>\r\n<input type=\'text\' data-rv-input=\'model.' +
+__p += '<div class=\'fb-edit-section-header\'>Initial value</div>\r\n<input type=\'text\' data-rv-input=\'model.' +
 ((__t = ( Formbuilder.options.mappings.VALUE )) == null ? '' : __t) +
 '\' />';
 
@@ -1348,7 +1450,7 @@ this["Formbuilder"]["templates"]["partials/left_side"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class=\'fb-left\'>\r\n  <ul class=\'fb-tabs\'>\r\n    <li class=\'active\'><a data-target=\'#addField\'>Add new field</a></li>\r\n    <li><a data-target=\'#editField\'>Edit field</a></li>\r\n  </ul>\r\n\r\n  <div class=\'fb-tab-content\'>\r\n    ' +
+__p += '<div class=\'fb-left\'>\r\n  <ul class=\'fb-tabs\'>\r\n    <li class=\'active\'><a data-target=\'#addField\'>Add Question</a></li>\r\n    <li><a data-target=\'#editField\'>Edit Question</a></li>\r\n  </ul>\r\n\r\n  <div class=\'fb-tab-content\'>\r\n    ' +
 ((__t = ( Formbuilder.templates['partials/add_field']() )) == null ? '' : __t) +
 '\r\n    ' +
 ((__t = ( Formbuilder.templates['partials/edit_field']() )) == null ? '' : __t) +

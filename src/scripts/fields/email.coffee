@@ -7,7 +7,6 @@ Formbuilder.registerField 'email',
   """
 
   edit: """
-    <%= Formbuilder.templates['edit/size']() %>
     <%= Formbuilder.templates['edit/value']() %>
   """
 

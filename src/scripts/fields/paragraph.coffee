@@ -7,16 +7,14 @@ Formbuilder.registerField 'paragraph',
   """
 
   edit: """
-    <%= Formbuilder.templates['edit/size']() %>
     <%= Formbuilder.templates['edit/min_max_length']() %>
     <%= Formbuilder.templates['edit/value']() %>
   """
 
   addButton: """
-    <span class="symbol">&#182;</span> Paragraph
+    <span class="symbol">&#182;</span> Long Answer
   """
 
   defaultAttributes: (attrs) ->
-    attrs.field_options.size = 'small'
     attrs.field_options.value = ''
     attrs

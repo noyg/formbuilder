@@ -7,7 +7,6 @@ Formbuilder.registerField 'file',
   """
 
   edit: """
-    <%= Formbuilder.templates['edit/size']() %>
   """
 
   addButton: """
